@@ -1,11 +1,3 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import {
@@ -13,10 +5,12 @@ import {
   StyleSheet,
   Text,
   View,
+  Dimensions,
 } from 'react-native';
 
 import 'config/ReactotronConfig';
 import 'config/DevToolsConfig';
+import Post from 'components/Post';
 
 console.tron.log('teste');
 
@@ -27,6 +21,8 @@ const instructions = Platform.select({
     'Shake or press menu button for dev menu',
 });
 
+const { width, height } = Dimensions.get('window');
+
 export default class App extends Component {
   static propTypes ={
     prop: PropTypes.string.isRequired,
@@ -34,9 +30,12 @@ export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>Welcome to React Native!</Text>
-        <Text style={styles.instructions}>To get started, edit App.js</Text>
-        <Text style={styles.instructions}>{instructions}</Text>
+      <View style={styles.box}>
+        <Text style={styles.boxText}>GoNative App</Text>
+      </View>
+      <View style={styles.whiteBox}>
+      <Post />
+      </View>
       </View>
     );
   }
@@ -45,18 +44,25 @@ export default class App extends Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: '#F5FCFF',
+    backgroundColor: '#EE7777',
   },
-  welcome: {
+  box: {
+    flex: 1,
+    maxHeight: 60,
+    backgroundColor: '#FFFFFF',
+  },
+  boxText: {
+    flex: 1,
     fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
+    fontWeight: 'bold',
     color: '#333333',
-    marginBottom: 5,
+    textAlignVertical: 'center',
+    textAlign: 'center',
+  },
+  whiteBox: {
+    justifyContent: 'flex-start',
+    alignItems: 'center',
+    flex: 1,
+    padding: 20,
   },
 });
