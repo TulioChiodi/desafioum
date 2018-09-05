@@ -6,15 +6,14 @@ const { width, height } = Dimensions.get('window');
 
 export default class Post extends Component {
   static defaultProps = {
-    titulo: 'Campo Vazio',
-    autor: 'Campo Vazio',
-    conteudo: 'Campo Vazio',
-
+    //
   };
   static propTypes = {
-    titulo: PropTypes.string.isRequired,
-    autor: PropTypes.string.isRequired,
-    conteudo: PropTypes.string.isRequired,
+    post: PropTypes.any.isRequired,
+  };
+
+  componentWillMount() {
+    console.tron.log(this.props.post);
   };
 
   render() {
@@ -22,15 +21,15 @@ export default class Post extends Component {
       <View style={styles.container}>
        <View style={styles.header}>
         <Text style={styles.headerText}>
-           {this.props.titulo}
+           {this.props.post.titulo}
         </Text>
         <Text style={styles.whiteBoxTextTwo}>
-        {this.props.autor}
+        {this.props.post.autor}
         </Text>
         </View>
         <View style={styles.mainPost}>
         <Text style={styles.whiteBoxThree}>
-          {this.props.conteudo}
+          {this.props.post.conteudo}
         </Text>
         </View>
       </View>

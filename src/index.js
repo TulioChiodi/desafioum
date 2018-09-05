@@ -20,8 +20,13 @@ export default class App extends Component {
     posts: [
       {
         titulo: 'Aprendendo React Native',
-//        autor:'Túlio Chiodi Laine Mateus',
-//        conteudo:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+        autor: 'Túlio Chiodi Laine Mateus',
+        conteudo: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      },
+      {
+        titulo: 'Aprendendo React Native',
+        autor: 'Túlio Chiodi Laine Mateus',
+        conteudo: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
       },
     ],
   };
@@ -33,7 +38,10 @@ export default class App extends Component {
           <Text style={styles.boxText}>GoNative App</Text>
         </View>
         <View style={styles.whiteBox}>
-            {this.state.posts.map(post => <Post titulo={post}/>)}
+            {this.state.posts.map((x) =>
+                (<Post key={post} post={x}/>)
+              )
+            }
         </View>
       </View>
     );
