@@ -12,30 +12,29 @@ import 'config/ReactotronConfig';
 import 'config/DevToolsConfig';
 import Post from 'components/Post';
 
-console.tron.log('teste');
-
-const instructions = Platform.select({
-  ios: 'Press Cmd+R to reload,\n Cmd+D or shake for dev menu',
-  android:
-    'Double tap R on your keyboard to reload,\n' +
-    'Shake or press menu button for dev menu',
-});
-
 const { width, height } = Dimensions.get('window');
 
 export default class App extends Component {
-  static propTypes ={
-    prop: PropTypes.string.isRequired,
+
+  state = {
+    posts: [
+      {
+        titulo: 'Aprendendo React Native',
+//        autor:'Túlio Chiodi Laine Mateus',
+//        conteudo:'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
+      },
+    ],
   };
+
   render() {
     return (
       <View style={styles.container}>
-      <View style={styles.box}>
-        <Text style={styles.boxText}>GoNative App</Text>
-      </View>
-      <View style={styles.whiteBox}>
-      <Post />
-      </View>
+        <View style={styles.box}>
+          <Text style={styles.boxText}>GoNative App</Text>
+        </View>
+        <View style={styles.whiteBox}>
+            {this.state.posts.map(post => <Post titulo={post}/>)}
+        </View>
       </View>
     );
   }

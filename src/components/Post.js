@@ -5,27 +5,32 @@ import { View, Text, StyleSheet, Dimensions } from 'react-native';
 const { width, height } = Dimensions.get('window');
 
 export default class Post extends Component {
-//  static propTypes = {
-//    title:
-//  };
+  static defaultProps = {
+    titulo: 'Campo Vazio',
+    autor: 'Campo Vazio',
+    conteudo: 'Campo Vazio',
+
+  };
+  static propTypes = {
+    titulo: PropTypes.string.isRequired,
+    autor: PropTypes.string.isRequired,
+    conteudo: PropTypes.string.isRequired,
+  };
+
   render() {
     return(
       <View style={styles.container}>
        <View style={styles.header}>
-        <Text style={styles.whiteBoxTextOne}>
-           Aprendendo React Native
+        <Text style={styles.headerText}>
+           {this.props.titulo}
         </Text>
         <Text style={styles.whiteBoxTextTwo}>
-           Túlio Chiodi Laine Mateus
+        {this.props.autor}
         </Text>
         </View>
         <View style={styles.mainPost}>
         <Text style={styles.whiteBoxThree}>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-       sed do eiusmod tempor incididunt ut labore et dolore
-       magna aliqua. Ut enim ad minim veniam, quis nostrud
-       exercitation ullamco laboris nisi ut aliquip ex ea
-       commodo consequat.
+          {this.props.conteudo}
         </Text>
         </View>
       </View>
@@ -50,7 +55,7 @@ const styles = StyleSheet.create({
   mainPost:{
     paddingTop:10,
   },
-  whiteBoxTextOne:{
+  headerText:{
     fontSize: 20,
     fontWeight: 'bold',
     color: '#333333',
