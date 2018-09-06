@@ -4,44 +4,36 @@ import { View, Text, StyleSheet, Dimensions } from 'react-native';
 
 const { width, height } = Dimensions.get('window');
 
-export default class Post extends Component {
-  static defaultProps = {
-    //
+const Post = ({post}) => (
+  <View style={styles.container}>
+    <View style={styles.header}>
+      <Text style={styles.headerText}>
+        {post.titulo}
+      </Text>
+      <Text style={styles.whiteBoxTextTwo}>
+        {post.autor}
+      </Text>
+    </View>
+    <View style={styles.mainPost}>
+      <Text style={styles.whiteBoxThree}>
+        {post.conteudo}
+      </Text>
+   </View>
+  </View>
+);
+
+  Post.defaultProps = {
+    titulo: 'blank',
   };
-  static propTypes = {
+  Post.propTypes = {
     post: PropTypes.any.isRequired,
   };
 
-  componentWillMount() {
-    console.tron.log(this.props.post);
-  };
-
-  render() {
-    return(
-      <View style={styles.container}>
-       <View style={styles.header}>
-        <Text style={styles.headerText}>
-           {this.props.post.titulo}
-        </Text>
-        <Text style={styles.whiteBoxTextTwo}>
-        {this.props.post.autor}
-        </Text>
-        </View>
-        <View style={styles.mainPost}>
-        <Text style={styles.whiteBoxThree}>
-          {this.props.post.conteudo}
-        </Text>
-        </View>
-      </View>
-    );
-  }
-}
-
-
 const styles = StyleSheet.create({
   container:{
+    marginBottom: 20,
     padding: 20,
-    borderRadius: 6,
+    borderRadius: 8,
     alignItems:'flex-start',
     width: width - 40,
     backgroundColor: '#FFFFFF',
@@ -68,3 +60,5 @@ const styles = StyleSheet.create({
     color: '#666666',
   },
 });
+
+export default Post;
